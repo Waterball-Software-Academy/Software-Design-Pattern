@@ -9,7 +9,7 @@ public class ValidationUtils {
     public static String lengthShouldBe(String text, int minLength, int maxLength) {
         if (text.length() < minLength || text.length() > maxLength) {
             throw new IllegalArgumentException(
-                    String.format("The length of '%s' should be within the range %d ~ %d.", text, maxLength, maxLength));
+                    String.format("The length of '%s' should be within the range %d ~ %d.", text, minLength, maxLength));
         }
         return text;
     }
