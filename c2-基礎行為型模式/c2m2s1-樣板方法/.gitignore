@@ -9,7 +9,6 @@ overs JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, And
 .idea/gradle.xml
 .idea/libraries
 
-
 # AWS User-specific
 .idea/**/aws.xml
 
