@@ -26,6 +26,14 @@ public class StudentDataFile {
         new Thread(this::monitoring).start();
     }
 
+    public void register(StudentDataObserver observer) {
+        this.observers.add(observer);
+    }
+
+    public void unregister(StudentDataObserver observer) {
+        this.observers.remove(observer);
+    }
+
     private void monitoring() {
         while (monitoring) {
             delay(1000);
@@ -37,25 +45,17 @@ public class StudentDataFile {
         }
     }
 
-    public void register(StudentDataObserver observer) {
-        this.observers.add(observer);
-    }
-
-    public void unregister(StudentDataObserver observer) {
-        this.observers.remove(observer);
+    private void watchStudentData() throws IOException {
+        Set<Student> newStudents = new HashSet<>(ReadStudents.fromFile(studentDataFileName));
+        if (!this.students.equals(newStudents)) {
+            this.students = newStudents;
+            notifyObservers();
+        }
     }
 
     private void notifyObservers() throws IOException {
         for (StudentDataObserver observer : observers) {
             observer.update();
-        }
-    }
-
-    private void watchStudentData() throws IOException {
-        Set<Student> newStudents = new HashSet<>(ReadStudents.fromFile(studentDataFileName));
-        if (!StudentDataFile.this.students.equals(newStudents)) {
-            StudentDataFile.this.students = newStudents;
-            notifyObservers();
         }
     }
 

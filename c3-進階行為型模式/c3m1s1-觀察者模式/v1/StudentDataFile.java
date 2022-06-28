@@ -45,11 +45,11 @@ public class StudentDataFile {
         Set<Student> newStudents = new HashSet<>(ReadStudents.fromFile(studentDataFileName));
         if (!this.students.equals(newStudents)) {
             this.students = newStudents;
-            updateStudents();
+            notifyCharts();
         }
     }
 
-    private void updateStudents() throws IOException {
+    private void notifyCharts() throws IOException {
         languageBarChart.renderBarChart();
         jobTitlePieChart.renderPieChart();
         dataFileBackup.backup();

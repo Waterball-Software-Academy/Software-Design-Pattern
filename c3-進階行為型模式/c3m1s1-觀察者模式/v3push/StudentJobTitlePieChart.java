@@ -1,6 +1,7 @@
 package v3push;
 
 import common.BarChart;
+import common.PieChart;
 import common.Student;
 
 import java.io.IOException;
@@ -16,9 +17,9 @@ import static common.Utils.selectDistinct;
 public class StudentJobTitlePieChart implements StudentDataObserver {
     @Override
     public void update(Collection<Student> students) throws IOException {
-        BarChart barChart = new BarChart();
+        PieChart pieChart = new PieChart();
         List<String> x = selectDistinct(students, Student::getLanguage);
         List<Integer> y = count(x, students, Student::getLanguage);
-        barChart.export("students.bar.png", x, y);
+        pieChart.export("students.bar.png", x, y);
     }
 }

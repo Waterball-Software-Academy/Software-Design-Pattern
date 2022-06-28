@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 
@@ -24,7 +25,6 @@ public class StudentDataFileBackup {
     public void backup() throws IOException {
         String fileName = new SimpleDateFormat("yyyyMMdd-HH:mm:ss'.backup.data'", Locale.getDefault()).format(new Date());
         Files.writeString(Paths.get(fileName), dataFile.getStudents().stream()
-                .map(Student::toString)
-                .collect(joining("\n")));
+                .map(Student::toString).collect(joining("\n")));
     }
 }

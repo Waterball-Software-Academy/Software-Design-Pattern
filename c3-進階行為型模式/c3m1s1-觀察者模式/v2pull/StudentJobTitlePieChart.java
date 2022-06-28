@@ -24,10 +24,10 @@ public class StudentJobTitlePieChart implements StudentDataObserver {
 
     @Override
     public void update() throws IOException {
-        BarChart barChart = new BarChart();
+        PieChart pieChart = new PieChart();
         Collection<Student> students = dataFile.getStudents();
         List<String> x = selectDistinct(students, Student::getLanguage);
         List<Integer> y = count(x, students, Student::getLanguage);
-        barChart.export("students.bar.png", x, y);
+        pieChart.export("students.bar.png", x, y);
     }
 }
