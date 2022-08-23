@@ -18,22 +18,26 @@ public class VocabCrawlerAdapter implements VocabDictionary {
 
     @Override
     public Word lookup(String wordSpelling) throws WordNotExistsException {
-        SuperWORD superWORD;
         try {
-            Map<PartOfSpeech, List<String>> definitions = new LinkedHashMap<>();
-            superWORD = superVocabCrawler.crawl(wordSpelling);
-            String spelling = superWORD.raw;
-            for (String definitionLine : superWORD.definitions) {
-                String[] splits = definitionLine.split("\\s+", 2);
-                PartOfSpeech partOfSpeech = convertPartOfSpeech(splits[0]);
-                String definition = splits[1];
-                definitions.computeIfAbsent(partOfSpeech, k -> new ArrayList<>())
-                        .add(definition);
-            }
-            return new Word(spelling, definitions);
+            SuperWORD word = superVocabCrawler.crawl(wordSpelling);
+            return convertToWord(word);
         } catch (YouSpellItWrongException e) {
-            throw new WordNotExistsException();
+            throw new WordNotExistsException(wordSpelling, e);
         }
+    }
+
+    private Word convertToWord(SuperWORD word) {
+        String spelling = word.raw;
+        Map<PartOfSpeech, List<String>> definitions = new LinkedHashMap<>();
+
+        for (String definitionLine : word.definitions) {
+            String[] splits = definitionLine.split("\\s+", 2);
+            PartOfSpeech partOfSpeech = convertPartOfSpeech(splits[0]);
+            String definition = splits[1];
+            definitions.computeIfAbsent(partOfSpeech, k -> new ArrayList<>())
+                    .add(definition);
+        }
+        return new Word(spelling, definitions);
     }
 
     private PartOfSpeech convertPartOfSpeech(String partOfSpeech) {
@@ -42,9 +46,20 @@ public class VocabCrawlerAdapter implements VocabDictionary {
                 return PartOfSpeech.NOUN;
             case "verb":
                 return PartOfSpeech.VERB;
+            case "adverb":
+                return PartOfSpeech.ADV;
+            case "adjective":
+                return PartOfSpeech.ADJ;
+            case "article":
+                return PartOfSpeech.ARTICLE;
+            case "preposition":
+                return PartOfSpeech.PREPOSITION;
+            case "conjunction":
+                return PartOfSpeech.CONJUNCTION;
+            case "interjection":
+                return PartOfSpeech.INTERJECTION;
             default:
                 throw new IllegalArgumentException(String.format("Unsupported partOfSpeech '%s'.", partOfSpeech));
         }
     }
-
 }
