@@ -15,11 +15,11 @@ public class Directory {
     private final List<Directory> dirChildren = new ArrayList<>();
 
     public static Directory root() {
-        return new Directory("");
+        return new Directory("root");
     }
 
     public Directory(String name) {
-        this.name = shouldMatch("[A-Za-z0-9.-_]", name);
+        this.name = shouldMatch("[A-Za-z0-9.\\-_]+", name);
     }
 
     public void addFile(File file) {
@@ -31,27 +31,19 @@ public class Directory {
         directory.setParent(this);
     }
 
-    private void setParent(Directory parent) {
-        this.parent = parent;
-    }
-
-    public Directory getParent() {
-        return parent;
+    public File getFile(String name) {
+        for (File file : fileChildren) {
+            if (file.getName().equals(name)) {
+                return file;
+            }
+        }
+        return null;
     }
 
     public Directory getDirectory(String name) {
         for (Directory dir : dirChildren) {
             if (dir.name.equals(name)) {
                 return dir;
-            }
-        }
-        return null;
-    }
-
-    public File getFile(String name) {
-        for (File file : fileChildren) {
-            if (file.getName().equals(name)) {
-                return file;
             }
         }
         return null;
@@ -66,6 +58,14 @@ public class Directory {
             total += file.bytes();
         }
         return total;
+    }
+
+    private void setParent(Directory parent) {
+        this.parent = parent;
+    }
+
+    public Directory getParent() {
+        return parent;
     }
 
     public String getName() {

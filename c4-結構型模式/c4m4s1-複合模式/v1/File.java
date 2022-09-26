@@ -11,7 +11,7 @@ public class File {
     private final byte[] content;
 
     public File(String name, String content) {
-        this.name = shouldMatch("[A-Za-z0-9.-_]", name);
+        this.name = shouldMatch("[A-Za-z0-9.\\-_]+", name);
         this.content = content.getBytes();
     }
 

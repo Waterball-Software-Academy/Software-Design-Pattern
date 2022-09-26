@@ -13,32 +13,17 @@ import static utils.ValidationUtils.shouldMatch;
  */
 public abstract class Item {
     protected final String name;
-    protected Item parent;
-    protected final List<Item> children = new ArrayList<>();
+    protected Directory parent;
 
     public Item(String name) {
-        this.name = shouldMatch("[A-Za-z0-9.-_]", name);
+        this.name = shouldMatch("[A-Za-z0-9.\\-_]+", name);
     }
 
-    public Item getChild(String name) {
-        for (Item child : children) {
-            if (name.equals(child.name)) {
-                return child;
-            }
-        }
-        return null;
-    }
-
-    public void addChild(Item item) {
-        children.add(item);
-        item.setParent(this);
-    }
-
-    public Item getParent() {
+    public Directory getParent() {
         return parent;
     }
 
-    public void setParent(Item parent) {
+    public void setParent(Directory parent) {
         this.parent = parent;
     }
 

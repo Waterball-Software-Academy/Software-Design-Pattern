@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class CLI {
     private final Scanner in = new Scanner(System.in);
     private Directory current;
-
     public CLI(Directory current) {
         this.current = current;
     }
@@ -32,6 +31,20 @@ public class CLI {
         }
     }
 
+    private void changDirectory(String name) {
+        if ("..".equals(name)) {
+            current = current.getParent() == null /*root*/?
+                    current : current.getParent();
+        } else {
+            Directory target = current.getDirectory(name);
+            if (target == null) {
+                System.err.printf("Can't find the item '%s'.\n", name);
+            } else {
+                current = target;
+            }
+        }
+    }
+
     private void printSize(String name) {
         File file = current.getFile(name);
         if (file != null) {
@@ -42,20 +55,6 @@ public class CLI {
                 System.out.printf("Size: %dB\n", directory.totalBytes());
             } else {
                 System.err.printf("Can't find the item '%s'.\n", name);
-            }
-        }
-    }
-
-    private void changDirectory(String name) {
-        if ("..".equals(name)) {
-            current = current.getParent() == null ?
-                    current : current.getParent();
-        } else {
-            Directory target = current.getDirectory(name);
-            if (target == null) {
-                System.err.printf("Can't find the item '%s'.\n", name);
-            } else {
-                current = target;
             }
         }
     }

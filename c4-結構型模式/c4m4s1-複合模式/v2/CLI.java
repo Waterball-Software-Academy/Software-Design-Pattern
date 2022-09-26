@@ -7,9 +7,9 @@ import java.util.Scanner;
  */
 public class CLI {
     private final Scanner in = new Scanner(System.in);
-    private Item current;
+    private Directory current;
 
-    public CLI(Item current) {
+    public CLI(Directory current) {
         this.current = current;
     }
 
@@ -32,26 +32,28 @@ public class CLI {
         }
     }
 
-    private void printSize(String name) {
-        Item item = current.getChild(name);
-        if (item == null) {
-            System.err.printf("Can't find the item '%s'.\n", name);
-        } else {
-            System.out.printf("Size: %dB\n", item.bytes());
-        }
-    }
-
     private void changDirectory(String name) {
         if ("..".equals(name)) {
             current = current.getParent() == null ?
                     current : current.getParent();
         } else {
-            Item target = current.getChild(name);
+            Item target = current.getItem(name);
             if (target == null) {
                 System.err.printf("Can't find the item '%s'.\n", name);
+            } else if (!(target instanceof Directory)) {
+                System.err.printf("The item %s is not a directory.\n", name);
             } else {
-                current = target;
+                current = (Directory) target;
             }
+        }
+    }
+
+    private void printSize(String name) {
+        Item item = current.getItem(name);
+        if (item == null) {
+            System.err.printf("Can't find the item '%s'.\n", name);
+        } else {
+            System.out.printf("Size: %dB\n", item.bytes());
         }
     }
 }
