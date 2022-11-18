@@ -1,0 +1,20 @@
+
+{
+  "name": "and",
+  "children": [
+    {
+      "name": "echo",
+      "args": ["Hello World"]
+    },
+    {
+      "name": "repeat",
+      "args": [3],
+      "children": [
+        {
+          "name": "echo",
+          "args": ["Yo"]
+        }
+      ]
+    }
+  ]
+}
