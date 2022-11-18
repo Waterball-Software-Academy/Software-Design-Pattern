@@ -19,7 +19,7 @@ public class Directory extends Item {
 
     public Item getItem(String name) {
         for (Item child : children) {
-            if (name.equals(child.name)) {
+            if (name.equals(child.getName())) {
                 return child;
             }
         }
@@ -33,11 +33,6 @@ public class Directory extends Item {
 
     @Override
     public long bytes() {
-        long total = 0;
-        for (Item child : children) {
-            total += child.bytes();
-        }
-        return total;
+        return children.stream().mapToLong(Item::bytes).sum();
     }
-
 }
