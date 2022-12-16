@@ -3,10 +3,8 @@ package v2;
 import commons.Message;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.lang.String.format;
-import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toUnmodifiableList;
 
 /**
@@ -28,7 +26,7 @@ public class EmailFormatting extends MessageProcessor {
 
 
     private Message mailFormatting(Message message) {
-        return message.edit(format("Dear %s,\n\n%s\n\nBest regards,\n%s.",
+        return message.edit(format("Dear %s,\n\n%s\n\nBest regards,\n%s",
                 message.getTargetName(), message.getContent(), message.getAuthorName()));
     }
 }

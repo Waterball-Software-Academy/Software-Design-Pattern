@@ -21,7 +21,7 @@ public class EmailFormattingAndParagraphingMessenger extends Messenger {
     }
 
     private Message mailFormatting(Message message) {
-        return message.edit(format("Dear %s,\n\n%s\n\nBest regards,\n%s.",
+        return message.edit(format("Dear %s,\n\n%s\n\nBest regards,\n%s",
                 message.getTargetName(), message.getContent(), message.getAuthorName()));
     }
 

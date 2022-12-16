@@ -33,7 +33,7 @@ public class HideEmails extends MessageProcessor {
     private String hideEmail(String email) {
         String[] parts = email.split("@");
         char[] chars = parts[0].toCharArray();
-        int hiddenChars = (int) Math.ceil(chars.length / 4f);
+        int hiddenChars = (int) Math.ceil(chars.length / 5f);
         for (int i = 0; i < hiddenChars; i++) {
             chars[hiddenChars + i] = '*';
         }

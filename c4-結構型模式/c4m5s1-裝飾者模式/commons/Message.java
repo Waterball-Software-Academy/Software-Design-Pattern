@@ -1,6 +1,7 @@
 package commons;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import static java.time.LocalDateTime.now;
 import static commons.ValidationUtils.lengthShouldBeWithin;
@@ -51,5 +52,19 @@ public class Message {
 
     public String getTargetName() {
         return target.getNickname();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message = (Message) o;
+        return author.equals(message.author) && target.equals(message.target) && content.equals(message.content) && createdTime.equals(message.createdTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, target, content, createdTime);
     }
 }

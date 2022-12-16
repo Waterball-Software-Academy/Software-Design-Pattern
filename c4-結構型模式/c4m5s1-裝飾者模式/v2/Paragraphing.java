@@ -11,8 +11,8 @@ import static java.util.stream.Collectors.toUnmodifiableList;
 /**
  * @author - johnny850807@gmail.com (Waterball)
  */
-public class Paragraph extends MessageProcessor {
-    public Paragraph(Messenger next) {
+public class Paragraphing extends MessageProcessor {
+    public Paragraphing(Messenger next) {
         super(next);
     }
 

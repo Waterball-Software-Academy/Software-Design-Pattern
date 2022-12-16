@@ -11,7 +11,7 @@ import java.util.List;
 public class DiscordMessenger implements Messenger {
     @Override
     public void send(List<Message> messages) {
-        System.out.println("訊息已經送到了 Discord ...");
+        System.out.println("以下訊息已經送到了 Discord ...");
         for (Message message : messages) {
             System.out.printf("[%s] %s: \n%s\n",
                     message.getCreatedTime().format(DateTimeFormatter.ofPattern("MM/dd hh:mm")),

@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 
@@ -30,7 +29,7 @@ public class EmailHidingAndParagraphingMessenger extends Messenger {
     private String hideEmail(String email) {
         String[] parts = email.split("@");
         char[] chars = parts[0].toCharArray();
-        int hiddenChars = (int) Math.ceil(chars.length / 4f);
+        int hiddenChars = (int) Math.ceil(chars.length / 5f);
         for (int i = 0; i < hiddenChars; i++) {
             chars[hiddenChars + i] = '*';
         }

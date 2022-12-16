@@ -1,5 +1,7 @@
 package commons;
 
+import static java.lang.String.format;
+
 /**
  * @author - johnny850807@gmail.com (Waterball)
  */
@@ -18,5 +20,10 @@ public class User {
 
     public Email getEmail() {
         return email;
+    }
+
+    @Override
+    public String toString() {
+        return format("%s (%s)", nickname, email);
     }
 }

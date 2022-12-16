@@ -1,4 +1,4 @@
-package v2;
+package v1;
 
 import commons.Email;
 import commons.Message;
@@ -14,8 +14,8 @@ public class Main {
         );
 
         System.out.println("====== EmailFormattingAndParagraphingMessenger =====");
-        new EmailFormatting(new Paragraphing(new DiscordMessenger())).send(message);
+        new EmailFormattingAndParagraphingMessenger().sendMessage(message);
         System.out.println("\n====== EmailHidingAndParagraphingMessenger =====");
-        new HideEmails(new Paragraphing(new ConsoleMessenger())).send(message);
+        new EmailHidingAndParagraphingMessenger().sendMessage(message);
     }
 }
