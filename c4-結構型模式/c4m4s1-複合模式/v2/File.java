@@ -1,5 +1,9 @@
 package v2;
 
+import java.util.Collections;
+import java.util.List;
+
+import static java.util.Collections.emptyList;
 import static utils.ValidationUtils.shouldMatch;
 
 /**
@@ -18,7 +22,12 @@ public class File extends Item {
     }
 
     @Override
-    public long bytes() {
+    public long totalBytes() {
         return content.length;
+    }
+
+    @Override
+    public List<Item> search(String keyword) {
+        return emptyList();
     }
 }

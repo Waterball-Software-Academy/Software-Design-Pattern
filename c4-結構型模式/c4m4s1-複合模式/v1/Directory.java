@@ -60,6 +60,26 @@ public class Directory {
         return total;
     }
 
+    public List<File> searchFiles(String keyword) {
+        List<File> files = new ArrayList<>();
+        for (File file : fileChildren) {
+            if (file.getName().contains(keyword)) {
+                files.add(file);
+            }
+        }
+        return files;
+    }
+
+    public List<Directory> searchDirectories(String keyword) {
+        List<Directory> directories = new ArrayList<>();
+        for (Directory dirChild : dirChildren) {
+            if (dirChild.getName().contains(keyword)) {
+                directories.add(dirChild);
+            }
+        }
+        return directories;
+    }
+
     private void setParent(Directory parent) {
         this.parent = parent;
     }

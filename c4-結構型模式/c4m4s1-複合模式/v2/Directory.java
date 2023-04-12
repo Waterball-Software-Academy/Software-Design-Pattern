@@ -1,7 +1,14 @@
 package v2;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Stream.concat;
 
 /**
  * @author - johnny850807@gmail.com (Waterball)
@@ -17,13 +24,10 @@ public class Directory extends Item {
         super(name);
     }
 
-    public Item getItem(String name) {
-        for (Item child : children) {
-            if (name.equals(child.getName())) {
-                return child;
-            }
-        }
-        return null;
+    public Optional<Item> getItem(String name) {
+        return children.stream()
+                .filter(c -> c.getName().equals(name))
+                .findFirst();
     }
 
     public void addItem(Item item) {
@@ -32,7 +36,15 @@ public class Directory extends Item {
     }
 
     @Override
-    public long bytes() {
-        return children.stream().mapToLong(Item::bytes).sum();
+    public long totalBytes() {
+        return children.stream().mapToLong(Item::totalBytes).sum();
+    }
+
+    @Override
+    public List<Item> search(String keyword) {
+        return children.stream()
+                .filter(c -> c.getName().contains(keyword))
+                .flatMap(c -> concat(Stream.of(c), c.search(keyword).stream()))
+                .collect(toList());
     }
 }
