@@ -4,19 +4,13 @@ import tunnel.Tunnel;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.Socket;
-import java.util.Collection;
-import java.util.HashSet;
-
-import static java.lang.String.format;
-import static java.lang.System.arraycopy;
 
 /**
  * @author johnny@waterballsa.tw
  */
 public class WaterballTunnel implements Tunnel {
-    public static final String WATERBALL = "Waterball!!";
+    public static final String WATERBALL = "水球好棒!!";
     private final InputStream in;
     private final Socket client;
 
@@ -31,10 +25,9 @@ public class WaterballTunnel implements Tunnel {
 
     @Override
     public String message() throws IOException {
-        String username = acceptMessage();
         String message = acceptMessage();
         disconnect();
-        return format("%s: %s", username, message);
+        return message;
     }
 
     @Override
@@ -53,6 +46,5 @@ public class WaterballTunnel implements Tunnel {
         }
 
         return new String(messagePacket, WATERBALL.length(), length - WATERBALL.length());
-
     }
 }

@@ -1,5 +1,7 @@
 package v1;
 
+import tunnel.Tunnel;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,7 +11,6 @@ import static java.lang.String.format;
 /**
  * @author johnny@waterballsa.tw
  */
-
 public abstract class ChatRoomServer {
     private final int port;
 
@@ -18,13 +19,15 @@ public abstract class ChatRoomServer {
     }
 
     public void startServer() throws IOException {
-        try (var server = new ServerSocket(port)) {
+        try(var server = new ServerSocket(port)) {
+            // 等下一位客人光臨
             Socket client = server.accept();
-
-            // Tunnel tunnel = 某種 Tunnel (client);
-            // String message = tunnel.message();
-
-            // System.out.println(message);
+            Tunnel tunnel = createTunnel(client);
+            String message = tunnel.message();
+            System.out.println(message);
         }
     }
+
+    // 工廠方法 factory method
+    protected abstract Tunnel createTunnel(Socket client);
 }
