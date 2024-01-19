@@ -1,0 +1,21 @@
+package v2.thirdparty;
+
+import v2.Player;
+import v2.Portal;
+import v2.PortalDecorator;
+
+/**
+ * @author johnny@waterballsa.tw
+ */
+public class SuperPortal extends PortalDecorator {
+
+    public SuperPortal(Portal next) {
+        super(next);
+    }
+
+    @Override
+    public void access(Player player) {
+        System.out.println("<有機率打廣告>");
+        next.access(player);
+    }
+}
