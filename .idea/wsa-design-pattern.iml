@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/c4-結構型模式/c4m1s1-門面模式" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/c5-創建型模式/c5m1s1-單體模式" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/c5-創建型模式/c5m2s1-工廠方法" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c5-創建型模式/c5m3s1-抽象工廠" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
