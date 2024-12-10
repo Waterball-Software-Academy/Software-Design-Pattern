@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/c1-物件導向之不新手的新手村/c1-物件導向之不新手的新手村.iml" filepath="$PROJECT_DIR$/c1-物件導向之不新手的新手村/c1-物件導向之不新手的新手村.iml" />
-      <module fileurl="file://$PROJECT_DIR$/c2-基礎行為型模式/c2-基礎行為型模式.iml" filepath="$PROJECT_DIR$/c2-基礎行為型模式/c2-基礎行為型模式.iml" />
+      <module fileurl="file://$PROJECT_DIR$/c1-物件導向之不新手的新手村/c1-行雲流水的設計底層思路.iml" filepath="$PROJECT_DIR$/c1-物件導向之不新手的新手村/c1-行雲流水的設計底層思路.iml" />
+      <module fileurl="file://$PROJECT_DIR$/c2-Christopher-Alexander-設計模式/c2-基礎行為型模式.iml" filepath="$PROJECT_DIR$/c2-Christopher-Alexander-設計模式/c2-基礎行為型模式.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/wsa-design-pattern.iml" filepath="$PROJECT_DIR$/.idea/wsa-design-pattern.iml" />
     </modules>
   </component>

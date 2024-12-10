@@ -8,10 +8,10 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/c4-結構型模式/c4m1s1-門面模式" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/c5-創建型模式/c5m1s1-單體模式" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/c5-創建型模式/c5m2s1-工廠方法" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/c5-創建型模式/c5m3s1-抽象工廠" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c4-規模化架構思維/景點-門面模式" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c5-生命週期及控制反轉/景點-單體模式" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c5-生命週期及控制反轉/景點-工廠方法" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c5-生命週期及控制反轉/景點-抽象工廠" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
